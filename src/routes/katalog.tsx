@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useMemo } from "react";
-import { ArrowUpRight, MessageCircle, Search } from "lucide-react";
+import { ArrowUpRight, Search } from "lucide-react";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { products, categories, buildWhatsAppUrl, productInquiryMessage, type Product } from "@/lib/products";
 import { ProductModal } from "@/components/ProductModal";
 
@@ -94,8 +95,8 @@ function Katalog() {
             <Search className="mx-auto text-muted-foreground" size={32} />
             <p className="font-display text-2xl mt-4 uppercase">Belum ada produk pada kategori ini</p>
             <p className="text-muted-foreground mt-2 max-w-md mx-auto text-sm">Hubungi kami untuk request custom — apa pun kebutuhan Anda, kami bantu produksi.</p>
-            <a href={buildWhatsAppUrl("Halo Fauzi Design, saya butuh produk custom yang belum ada di katalog.")} target="_blank" rel="noopener noreferrer" className="btn-tag btn-tag-primary mt-6">
-              <MessageCircle size={14} /> Request Custom
+            <a href={buildWhatsAppUrl("Halo Fauzi Design, saya butuh produk custom yang belum ada di katalog.")} target="_blank" rel="noopener noreferrer" className="btn-tag btn-tag-whatsapp mt-6">
+              <WhatsAppIcon size={14} /> Request Custom
             </a>
           </div>
         ) : (
@@ -119,9 +120,9 @@ function Katalog() {
                     <a
                       href={buildWhatsAppUrl(productInquiryMessage(p))}
                       target="_blank" rel="noopener noreferrer"
-                      className="btn-tag btn-tag-primary w-full justify-center"
+                      className="btn-tag btn-tag-whatsapp w-full justify-center"
                     >
-                      <MessageCircle size={12} /> Minta Penawaran
+                      <WhatsAppIcon size={12} /> Minta Penawaran
                     </a>
                     <button onClick={() => setActive(p)} className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground hover:text-neon flex items-center gap-1 self-center">
                       Lihat Detail <ArrowUpRight size={12} />

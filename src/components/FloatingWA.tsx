@@ -1,4 +1,4 @@
-import { MessageCircle } from "lucide-react";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 import { buildWhatsAppUrl } from "@/lib/products";
 
 export function FloatingWA() {
@@ -10,9 +10,9 @@ export function FloatingWA() {
       aria-label="Chat WhatsApp"
       className="fixed bottom-5 right-5 z-40 group"
     >
-      <span className="absolute inset-0 rounded-full bg-neon/30 blur-xl group-hover:bg-neon/50 transition" />
-      <span className="relative flex items-center gap-2 bg-neon text-background pl-4 pr-5 py-3 rounded-full font-mono text-xs uppercase tracking-widest font-bold shadow-2xl hover:scale-105 transition">
-        <MessageCircle size={18} />
+      <span className="absolute inset-0 rounded-full blur-xl transition" style={{ background: "rgba(37,211,102,0.3)" }} />
+      <span className="relative flex items-center gap-2 pl-4 pr-5 py-3 rounded-full font-mono text-xs uppercase tracking-widest font-bold shadow-2xl hover:scale-105 transition" style={{ background: "#25D366", color: "#fff" }}>
+        <WhatsAppIcon size={18} />
         <span className="hidden sm:inline">Chat WhatsApp</span>
       </span>
     </a>

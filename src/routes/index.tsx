@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, Check, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import heroImg from "@/assets/hero-main.jpg";
 import workshop from "@/assets/upload-workshop-jahit.jpg";
 import p1 from "@/assets/upload-kaos-neglasari.jpg";
@@ -67,11 +68,11 @@ function Index() {
           </p>
 
           <div className="flex flex-wrap gap-3 mt-8">
-            <Link to="/katalog" className="btn-tag btn-tag-primary">
+            <Link to="/katalog" search={{ cat: undefined }} className="btn-tag btn-tag-primary">
               Lihat Katalog <ArrowUpRight size={14} />
             </Link>
-            <a href={wa} target="_blank" rel="noopener noreferrer" className="btn-tag btn-tag-outline">
-              <MessageCircle size={14} /> Konsultasi Gratis
+            <a href={wa} target="_blank" rel="noopener noreferrer" className="btn-tag btn-tag-whatsapp">
+              <WhatsAppIcon size={14} /> Konsultasi Gratis
             </a>
           </div>
 
@@ -102,7 +103,7 @@ function Index() {
               Apa pun produk Anda, <span className="text-stroke">kami buat.</span>
             </h2>
           </div>
-          <Link to="/katalog" className="btn-tag btn-tag-ghost self-start">
+          <Link to="/katalog" search={{ cat: undefined }} className="btn-tag btn-tag-ghost self-start">
             Lihat Semua <ArrowUpRight size={14} />
           </Link>
         </div>
@@ -141,8 +142,8 @@ function Index() {
             <p className="mt-6 text-muted-foreground leading-relaxed max-w-md">
               Kami bukan vendor biasa. Kami partner produksi yang memahami detail, deadline, dan reputasi brand Anda.
             </p>
-            <a href={wa} target="_blank" rel="noopener noreferrer" className="btn-tag btn-tag-primary mt-8">
-              <MessageCircle size={14} /> Mulai Proyek
+            <a href={wa} target="_blank" rel="noopener noreferrer" className="btn-tag btn-tag-whatsapp mt-8">
+              <WhatsAppIcon size={14} /> Mulai Proyek
             </a>
           </div>
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-3">
@@ -191,11 +192,8 @@ function Index() {
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/50 to-transparent" />
         <div className="container-edge relative">
           <p className="label-tag mb-3">​</p>
-          <h2 className="font-display text-4xl md:text-6xl uppercase leading-[0.95] max-w-2xl">
-            Diproduksi langsung di <br /> <span className="text-stroke">workshop kami.</span>
-          </h2>
-          <p className="mt-5 max-w-md text-muted-foreground">
-            Di Kerjakan Oleh Tenaga Propesional Yang Sudah Berpengalaman di Bidangnya.
+          <p className="max-w-md text-lg md:text-xl text-muted-foreground leading-relaxed">
+            Di Kerjakan Oleh Tenaga Profesional Yang Sudah Berpengalaman di Bidangnya.
           </p>
           <Link to="/tentang-kami" className="btn-tag btn-tag-outline mt-8">
             Pelajari Proses Produksi <ArrowUpRight size={14} />
@@ -215,7 +213,7 @@ function Index() {
               </h2>
             </div>
             <a href={wa} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-background text-foreground px-8 py-5 font-mono text-xs uppercase tracking-widest hover:bg-background/80 transition" style={{ clipPath: "polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%)" }}>
-                <MessageCircle size={16} /> Chat WhatsApp Sekarang
+                <WhatsAppIcon size={16} /> Chat WhatsApp Sekarang
             </a>
           </div>
         </div>

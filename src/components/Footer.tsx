@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Logo } from "./Logo";
-import { Instagram, MessageCircle, Mail, MapPin, Music2 } from "lucide-react";
+import { Instagram, Mail, MapPin, Music2 } from "lucide-react";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 import { buildWhatsAppUrl } from "@/lib/products";
 
 export function Footer() {
@@ -17,9 +18,9 @@ export function Footer() {
             <a
               href={buildWhatsAppUrl("Halo Fauzi Design, saya ingin memulai proyek custom.")}
               target="_blank" rel="noopener noreferrer"
-              className="btn-tag btn-tag-ghost mt-6"
+              className="btn-tag btn-tag-whatsapp mt-6"
             >
-              <MessageCircle size={14} /> Mulai Proyek
+              <WhatsAppIcon size={14} /> Mulai Proyek
             </a>
           </div>
 
@@ -45,11 +46,11 @@ export function Footer() {
           <div>
             <p className="label-tag mb-4">[Kontak]</p>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex items-start gap-2"><MessageCircle size={14} className="mt-1 text-neon" /> +62 889-9112-5343</li>
-              <li className="flex items-start gap-2"><Mail size={14} className="mt-1 text-neon" /><span>fauzidesignindonesia@gmail.com</span></li>
+              <li className="flex items-start gap-2"><span className="mt-1" style={{ color: "#25D366" }}><WhatsAppIcon size={14} /></span> +62 889-9112-5343</li>
+              <li className="flex items-start gap-2"><Mail size={14} className="mt-1 text-neon shrink-0" /><span className="break-all">fauzidesignindonesia@gmail.com</span></li>
               <li className="flex items-start gap-2"><MapPin size={14} className="mt-1 text-neon" /> Workshop Produksi · Indonesia</li>
               <li className="flex items-start gap-2"><Instagram size={14} className="mt-1 text-neon" /> @fauzidesign.id</li>
-              <li className="flex items-start gap-2"><Music2 size={14} className="mt-1 text-neon" /> TikTok: @fauzidesi.id</li>
+              <li className="flex items-start gap-2"><Music2 size={14} className="mt-1 text-neon" /> TikTok: @fauzidesign.id</li>
             </ul>
           </div>
         </div>

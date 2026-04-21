@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { Menu, X, MessageCircle } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
+import { WhatsAppIcon } from "./WhatsAppIcon";
 import { buildWhatsAppUrl } from "@/lib/products";
 
 const NAV = [
@@ -53,15 +54,17 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-3">
-          <a
-            href={wa}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden md:inline-flex btn-tag btn-tag-primary"
-          >
-            <MessageCircle size={14} />
-            Konsultasi WhatsApp
-          </a>
+          <div className="hidden md:block">
+            <a
+              href={wa}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-tag btn-tag-whatsapp"
+            >
+              <WhatsAppIcon size={14} />
+              Konsultasi WhatsApp
+            </a>
+          </div>
           <button
             className="lg:hidden p-2 text-foreground"
             onClick={() => setOpen((v) => !v)}
@@ -91,9 +94,9 @@ export function Header() {
               href={wa}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-tag btn-tag-primary mt-2 self-start"
+              className="btn-tag btn-tag-whatsapp mt-2 self-start"
             >
-              <MessageCircle size={14} />
+              <WhatsAppIcon size={14} />
               Konsultasi WhatsApp
             </a>
           </nav>

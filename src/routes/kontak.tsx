@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { MessageCircle, Mail, MapPin, Clock, Plus, Minus, Instagram, Music2 } from "lucide-react";
+import { Mail, MapPin, Clock, Plus, Minus, Instagram, Music2 } from "lucide-react";
+import { WhatsAppIcon } from "@/components/WhatsAppIcon";
 import { buildWhatsAppUrl, WHATSAPP_NUMBER } from "@/lib/products";
 import { PageHero } from "@/components/SectionHero";
 
@@ -62,15 +63,15 @@ Mohon kirimkan quotation lengkap. Terima kasih.`;
       {/* CONTACT CARDS */}
       <section className="container-edge pb-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
         {[
-          { I: MessageCircle, t: "WhatsApp", v: "+62 889-9112-5343", href: buildWhatsAppUrl("Halo Fauzi Design"), tag: "Chat sekarang" },
+          { I: WhatsAppIcon, t: "WhatsApp", v: "+62 889-9112-5343", href: buildWhatsAppUrl("Halo Fauzi Design"), tag: "Chat sekarang" },
           { I: Mail, t: "Email", v: "fauzidesignindonesia@gmail.com", href: "mailto:fauzidesignindonesia@gmail.com", tag: "Kirim email" },
           { I: MapPin, t: "Alamat", v: "Workshop Produksi · Indonesia", href: "#", tag: "Lihat lokasi" },
           { I: Clock, t: "Jam Operasional", v: "Sen–Sab · 09.00–18.00 WIB", href: "#", tag: "Buka hari ini" },
         ].map((c) => (
           <a key={c.t} href={c.href} target="_blank" rel="noopener noreferrer" className="border border-border bg-surface p-6 hover:border-neon transition group">
-            <c.I className="text-neon" size={22} />
+            {c.t === "WhatsApp" ? <WhatsAppIcon className="text-[#25D366]" size={22} /> : <c.I className="text-neon" size={22} />}
             <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mt-4">[{c.t}]</p>
-            <p className="font-display text-sm md:text-base uppercase mt-1 leading-tight break-words hyphens-auto">{c.v}</p>
+            <p className="font-display text-xs sm:text-sm md:text-base uppercase mt-1 leading-tight break-all">{c.v}</p>
             <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground group-hover:text-neon transition mt-3">{c.tag} →</p>
           </a>
         ))}
@@ -131,8 +132,8 @@ Mohon kirimkan quotation lengkap. Terima kasih.`;
               />
             </div>
             <div className="sm:col-span-2 flex flex-col sm:flex-row gap-3 mt-2">
-              <button type="submit" className="btn-tag btn-tag-primary justify-center flex-1">
-                <MessageCircle size={14} /> Kirim via WhatsApp
+              <button type="submit" className="btn-tag btn-tag-whatsapp justify-center flex-1">
+                <WhatsAppIcon size={14} /> Kirim via WhatsApp
               </button>
               <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground self-center">
                 Quotation gratis · Tanpa biaya konsultasi
@@ -146,8 +147,8 @@ Mohon kirimkan quotation lengkap. Terima kasih.`;
             <p className="label-tag mb-3">[Respons Cepat]</p>
             <h3 className="font-display text-2xl uppercase leading-tight">Lebih suka chat langsung?</h3>
             <p className="text-sm text-muted-foreground mt-3">Kirim pesan WhatsApp dan dapatkan respons dalam hitungan menit di jam operasional.</p>
-            <a href={buildWhatsAppUrl("Halo Fauzi Design, saya ingin konsultasi gratis.")} target="_blank" rel="noopener noreferrer" className="btn-tag btn-tag-primary mt-5 w-full justify-center">
-              <MessageCircle size={14} /> Konsultasi Gratis
+            <a href={buildWhatsAppUrl("Halo Fauzi Design, saya ingin konsultasi gratis.")} target="_blank" rel="noopener noreferrer" className="btn-tag btn-tag-whatsapp mt-5 w-full justify-center">
+              <WhatsAppIcon size={14} /> Konsultasi Gratis
             </a>
           </div>
           <div className="border border-border bg-surface p-6 space-y-3">

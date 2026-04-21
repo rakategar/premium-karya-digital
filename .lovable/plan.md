@@ -1,49 +1,34 @@
 
-## Diagnosis
 
-Code itself is healthy — no Next.js leftovers, no broken imports, all assets exist, routes are valid TanStack Router files. The site even runs fine on Lovable's published URL (`premium-karya-digital.lovable.app`).
+## Plan: Ganti Ikon WhatsApp dengan Logo Asli dan Aksen Hijau
 
-**Why Vercel returns 404 at `/`:** the project is configured to build for **Cloudflare Workers**, not Vercel.
+### Apa yang Berubah
 
-Evidence:
-- `wrangler.jsonc` exists at the root (Cloudflare Workers config)
-- `package.json` includes `@cloudflare/vite-plugin` as a dependency
-- `@lovable.dev/vite-tanstack-config` (used in `vite.config.ts`) bundles the Cloudflare plugin in build mode
+Semua tombol dan ikon WhatsApp di seluruh situs akan menggunakan **logo resmi WhatsApp (SVG)** menggantikan ikon `MessageCircle` dari Lucide, dan warnanya diganti ke **hijau khas WhatsApp (#25D366)**.
 
-Result of `npm run build` in this state: output is a **Cloudflare Worker bundle** (`.wrangler/` / worker assets), **not** a static `dist/` folder with `index.html` that Vercel's default Vite preset expects. Vercel deploys "successfully" but has nothing to serve at `/`, hence the 404.
+### Langkah
 
-## Fix (no architecture rewrite needed)
+1. **Buat komponen `WhatsAppIcon`** (`src/components/WhatsAppIcon.tsx`)
+   - SVG path logo resmi WhatsApp (speech bubble + telepon)
+   - Menerima prop `size` dan `className` agar fleksibel seperti ikon Lucide
 
-TanStack Start officially supports a Vercel build target. We switch the SSR target from Cloudflare to Vercel — the rest of the app (routes, components, styles, assets) stays exactly as is.
+2. **Ganti semua `MessageCircle` untuk konteks WhatsApp** di file berikut:
+   - `src/components/FloatingWA.tsx` — ikon + warna background tombol floating → hijau WhatsApp
+   - `src/components/Header.tsx` — tombol "Konsultasi WhatsApp" di navbar & mobile menu
+   - `src/routes/index.tsx` — tombol "Konsultasi Gratis" di hero
+   - `src/routes/tentang-kami.tsx` — tombol "Mulai Proyek" dan "Chat WhatsApp"
+   - `src/routes/kontak.tsx` — kartu kontak WhatsApp, tombol form, dan sidebar
+   - `src/routes/katalog.tsx` — tombol "Request Custom" dan "Minta Penawaran"
+   - `src/components/Footer.tsx` (jika ada ikon WA)
 
-### Steps
+3. **Tambahkan kelas CSS aksen hijau WhatsApp** di `src/styles.css`:
+   - Varian baru `.btn-tag-whatsapp` dengan `background: #25D366` dan teks putih
+   - Tombol WhatsApp menggunakan kelas ini, bukan `.btn-tag-primary` (hijau neon saat ini)
 
-1. **Add Vercel target to `vite.config.ts`**
-   Pass `target: "vercel"` into `@lovable.dev/vite-tanstack-config` (or fall back to `@tanstack/react-start` plugin directly with `target: "vercel"`) so the build emits a Vercel-compatible output (`.vercel/output/`) instead of a Cloudflare Worker.
+4. **Floating WA button** — glow dan background diganti ke hijau WhatsApp (#25D366) agar langsung dikenali sebagai tombol WhatsApp
 
-2. **Add `vercel.json`** at the project root to lock the framework preset and output:
-   ```json
-   { "framework": null, "buildCommand": "npm run build", "outputDirectory": ".vercel/output" }
-   ```
-   (TanStack Start's Vercel target writes the Build Output API v3 directory directly — Vercel auto-detects it; the file just prevents Vercel from guessing wrong.)
+### Hasil
+- Semua tombol WhatsApp tampil dengan logo resmi dan warna hijau khas WhatsApp
+- Tombol non-WhatsApp tetap menggunakan warna neon seperti sekarang
+- Tidak ada perubahan layout atau konten
 
-3. **Keep `wrangler.jsonc`** (harmless on Vercel) OR remove it if you only deploy to Vercel from now on. I'd keep it so Lovable Publish keeps working.
-
-4. **Verify on Vercel**:
-   - Project Settings → Framework Preset: **Other** (do not pick "Vite", it'll override)
-   - Build command: `npm run build`
-   - Output: leave empty (Build Output API auto-detected)
-   - Install command: `npm install`
-
-### What I will NOT do
-- Will not rewrite to plain Vite SPA + React Router (would break SSR, per-route SEO, and `head()` meta you already wrote).
-- Will not remove TanStack Start (the entire `src/routes/` tree depends on it).
-- Will not touch any UI/content/images — only config files (`vite.config.ts`, add `vercel.json`).
-
-### Files touched
-- `vite.config.ts` — add Vercel target
-- `vercel.json` — new file
-- (optional) keep `wrangler.jsonc` for Lovable hosting
-
-### Alternative if you want zero config
-Just click **Publish** on Lovable — your site is already live and healthy at `https://premium-karya-digital.lovable.app`. Then connect a custom domain in Project Settings → Domains. No GitHub/Vercel pipeline needed.
