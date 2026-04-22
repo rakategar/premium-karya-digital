@@ -21,13 +21,6 @@ export const Route = createFileRoute("/tentang-kami")({
   component: Tentang,
 });
 
-const STATS = [
-  { n: "10+", l: "Tahun Berdiri" },
-  { n: "5.000+", l: "Pcs Diproduksi / Bulan" },
-  { n: "500+", l: "Klien Aktif" },
-  { n: "12", l: "MOQ Per Order" },
-];
-
 const PROCESS = [
   { n: "01", t: "Konsultasi & Brief", d: "Diskusi kebutuhan, target, dan referensi via WhatsApp atau meeting." },
   { n: "02", t: "Konfirmasi Desain & Spek", d: "Mockup, sample bahan, dan perhitungan teknis sebelum produksi." },
@@ -46,18 +39,6 @@ function Tentang() {
         subtitle="Fauzi Design lahir dari kecintaan terhadap kerajinan tekstil dan keinginan untuk menyajikan custom apparel berkualitas tinggi yang dapat diandalkan brand, komunitas, dan korporat di seluruh Indonesia."
         image={workshop}
       />
-
-      {/* STATS */}
-      <section className="container-edge py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 border border-border">
-          {STATS.map((s, i) => (
-            <div key={s.l} className={`p-6 md:p-8 ${i < 3 ? "md:border-r border-border" : ""} ${i < 2 ? "border-b md:border-b-0 border-border" : ""} ${i === 2 ? "border-r border-border md:border-r-0 lg:border-r" : ""}`}>
-              <p className="font-display text-4xl md:text-5xl text-neon">{s.n}</p>
-              <p className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mt-2">{s.l}</p>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* STORY */}
       <section className="container-edge py-20 md:py-28 grid lg:grid-cols-2 gap-12 items-center">

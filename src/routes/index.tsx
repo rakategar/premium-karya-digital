@@ -76,6 +76,23 @@ function Index() {
             </a>
           </div>
 
+          {/* Achievement Card */}
+          <div className="mt-10 inline-block">
+            <div className="bg-background/80 backdrop-blur-md border border-border rounded-2xl px-6 py-5 grid grid-cols-4 gap-6 md:gap-10">
+              {[
+                { n: "5+", l: "Tahun Pengalaman" },
+                { n: "10K+", l: "Pesanan Selesai" },
+                { n: "500+", l: "Klien Puas" },
+                { n: "98%", l: "Rating Kepuasan" },
+              ].map((s) => (
+                <div key={s.l} className="text-center">
+                  <p className="font-display text-2xl md:text-4xl text-neon leading-none">{s.n}</p>
+                  <p className="font-mono text-[9px] md:text-[10px] uppercase tracking-widest text-muted-foreground mt-1.5 leading-tight">{s.l}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
         </div>
       </section>
 

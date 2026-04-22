@@ -48,7 +48,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex items-start gap-2"><span className="mt-1" style={{ color: "#25D366" }}><WhatsAppIcon size={14} /></span> +62 889-9112-5343</li>
               <li className="flex items-start gap-2"><Mail size={14} className="mt-1 text-neon shrink-0" /><span className="break-all">fauzidesignindonesia@gmail.com</span></li>
-              <li className="flex items-start gap-2"><MapPin size={14} className="mt-1 text-neon" /> Workshop Produksi · Indonesia</li>
+              <li className="flex items-start gap-2"><MapPin size={14} className="mt-1 text-neon" /> Cibiru, Kota Bandung</li>
               <li className="flex items-start gap-2"><Instagram size={14} className="mt-1 text-neon" /> @fauzidesign.id</li>
               <li className="flex items-start gap-2"><Music2 size={14} className="mt-1 text-neon" /> TikTok: @fauzidesign.id</li>
             </ul>
